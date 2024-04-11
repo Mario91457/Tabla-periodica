@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu</title>
+  <style>
+    .menu {
+        display: block;
+        width: 350px;
+        height: 250px; 
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
+        text-align: center;
+    }
+    .Simbolos, .Nombres {
+        display: none;
+        font-family: arial;
+        font-size: 24px;
+        width: 350px;
+        height: 250px; 
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
+        text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+<div class="menu">
+  <button id="SimbolosC">Simbolos</button>
+  <button id="NombresC">Nombres</button>
+</div>
+
+<div class="Simbolos">
+    <label id="PreguntaS">Que es: </label>
+    <br>
+    <input id="inputS" type="text">
+    <button onclick="SimbolosF()">Verificar</button>
+    <br><br><br>
+    <label id="ResultadoS">Resultado: </label>
+    <br>
+    <label id="TuRespuestaS">Tu respuesta: </label>
+    <br>
+    <label id="RespuestaS">Respuesta: </label>
+</div>
+
+<div class="Nombres">
+    
+    <label id="PreguntaN">Que es: </label>
+    <br>
+    <input id="InputN" type="text">
+    <button onclick="NombresF()">Verificar</button>
+    <br><br><br>
+    <label id="ResultadoN">Resultado: </label>
+    <br>
+    <label id="TuRespuestaN">Tu respuesta: </label>
+    <br>
+    <label id="RespuestaN">Respuesta: </label>
+</div>
+
+<script>
+    const elementos = [ {nombre: 'Hidrógeno', simbolo: 'H'}, {nombre: 'Helio', simbolo: 'He'}, {nombre: 'Litio', simbolo: 'Li'}, {nombre: 'Berilio', simbolo: 'Be'}, {nombre: 'Boro', simbolo: 'B'}, {nombre: 'Carbono', simbolo: 'C'}, {nombre: 'Nitrógeno', simbolo: 'N'}, {nombre: 'Oxígeno', simbolo: 'O'}, {nombre: 'Flúor', simbolo: 'F'}, {nombre: 'Neón', simbolo: 'Ne'}, {nombre: 'Sodio', simbolo: 'Na'}, {nombre: 'Magnesio', simbolo: 'Mg'}, {nombre: 'Aluminio', simbolo: 'Al'}, {nombre: 'Silicio', simbolo: 'Si'}, {nombre: 'Fósforo', simbolo: 'P'}, {nombre: 'Azufre', simbolo: 'S'}, {nombre: 'Cloro', simbolo: 'Cl'}, {nombre: 'Argón', simbolo: 'Ar'}, {nombre: 'Potasio', simbolo: 'K'}, {nombre: 'Calcio', simbolo: 'Ca'}, {nombre: 'Escandio', simbolo: 'Sc'}, {nombre: 'Titanio', simbolo: 'Ti'}, {nombre: 'Vanadio', simbolo: 'V'}, {nombre: 'Cromo', simbolo: 'Cr'}, {nombre: 'Manganeso', simbolo: 'Mn'}, {nombre: 'Hierro', simbolo: 'Fe'}, {nombre: 'Cobalto', simbolo: 'Co'}, {nombre: 'Níquel', simbolo: 'Ni'}, {nombre: 'Cobre', simbolo: 'Cu'}, {nombre: 'Zinc', simbolo: 'Zn'}, {nombre: 'Galio', simbolo: 'Ga'}, {nombre: 'Germanio', simbolo: 'Ge'}, {nombre: 'Arsénico', simbolo: 'As'}, {nombre: 'Selenio', simbolo: 'Se'}, {nombre: 'Bromo', simbolo: 'Br'}, {nombre: 'Kriptón', simbolo: 'Kr'}, {nombre: 'Rubidio', simbolo: 'Rb'}, {nombre: 'Estroncio', simbolo: 'Sr'}, {nombre: 'Itrio', simbolo: 'Y'}, {nombre: 'Zirconio', simbolo: 'Zr'}, {nombre: 'Niobio', simbolo: 'Nb'}, {nombre: 'Molibdeno', simbolo: 'Mo'}, {nombre: 'Tecnecio', simbolo: 'Tc'}, {nombre: 'Rutenio', simbolo: 'Ru'}, {nombre: 'Rodio', simbolo: 'Rh'}, {nombre: 'Paladio', simbolo: 'Pd'}, {nombre: 'Plata', simbolo: 'Ag'}, {nombre: 'Cadmio', simbolo: 'Cd'}, {nombre: 'Indio', simbolo: 'In'}, {nombre: 'Estaño', simbolo: 'Sn'}, {nombre: 'Antimonio', simbolo: 'Sb'}, {nombre: 'Telurio', simbolo: 'Te'}, {nombre: 'Yodo', simbolo: 'I'}, {nombre: 'Xenón', simbolo: 'Xe'}, {nombre: 'Cesio', simbolo: 'Cs'}, {nombre: 'Bario', simbolo: 'Ba'}, {nombre: 'Lantano', simbolo: 'La'}, {nombre: 'Cerio', simbolo: 'Ce'}, {nombre: 'Praseodimio', simbolo: 'Pr'}, {nombre: 'Neodimio', simbolo: 'Nd'}, {nombre: 'Prometio', simbolo: 'Pm'}, {nombre: 'Samario', simbolo: 'Sm'}, {nombre: 'Europio', simbolo: 'Eu'}, {nombre: 'Gadolinio', simbolo: 'Gd'}, {nombre: 'Terbio', simbolo: 'Tb'}, {nombre: 'Disprosio', simbolo: 'Dy'}, {nombre: 'Holmio', simbolo: 'Ho'}, {nombre: 'Erbio', simbolo: 'Er'}, {nombre: 'Tulio', simbolo: 'Tm'}, {nombre: 'Iterbio', simbolo: 'Yb'}, {nombre: 'Lutecio', simbolo: 'Lu'}, {nombre: 'Hafnio', simbolo: 'Hf'}, {nombre: 'Tantalio', simbolo: 'Ta'}, {nombre: 'Wolframio', simbolo: 'W'}, {nombre: 'Renio', simbolo: 'Re'}, {nombre: 'Osmio', simbolo: 'Os'}, {nombre: 'Iridio', simbolo: 'Ir'}, {nombre: 'Platino', simbolo: 'Pt'}, {nombre: 'Oro', simbolo: 'Au'}, {nombre: 'Mercurio', simbolo: 'Hg'}, {nombre: 'Talio', simbolo: 'Tl'}, {nombre: 'Plomo', simbolo: 'Pb'}, {nombre: 'Bismuto', simbolo: 'Bi'}, {nombre: 'Polonio', simbolo: 'Po'}, {nombre: 'Astato', simbolo: 'At'}, {nombre: 'Radón', simbolo: 'Rn'}, {nombre: 'Francio', simbolo: 'Fr'}, {nombre: 'Radio', simbolo: 'Ra'}, {nombre: 'Actinio', simbolo: 'Ac'}, {nombre: 'Torio', simbolo: 'Th'}, {nombre: 'Protactinio', simbolo: 'Pa'}, {nombre: 'Uranio', simbolo: 'U'}, {nombre: 'Neptunio', simbolo: 'Np'}, {nombre: 'Plutonio', simbolo: 'Pu'}, {nombre: 'Americio', simbolo: 'Am'}, {nombre: 'Curio', simbolo: 'Cm'}, {nombre: 'Berkelio', simbolo: 'Bk'}, {nombre: 'Californio', simbolo: 'Cf'}, {nombre: 'Einstenio', simbolo: 'Es'}, {nombre: 'Fermio', simbolo: 'Fm'}, {nombre: 'Mendelevio', simbolo: 'Md'}, {nombre: 'Nobelio', simbolo: 'No'}, {nombre: 'Laurencio', simbolo: 'Lr'}, {nombre: 'Rutherfordio', simbolo: 'Rf'}, {nombre: 'Dubnio', simbolo: 'Db'}, {nombre: 'Seaborgio', simbolo: 'Sg'}, {nombre: 'Bohrio', simbolo: 'Bh'}, {nombre: 'Hassio', simbolo: 'Hs'}, {nombre: 'Meitnerio', simbolo: 'Mt'}, {nombre: 'Darmstadtio', simbolo: 'Ds'}, {nombre: 'Roentgenio', simbolo: 'Rg'}, {nombre: 'Copernicio', simbolo: 'Cn'}, {nombre: 'Nihonio', simbolo: 'Nh'}, {nombre: 'Flerovio', simbolo: 'Fl'}, {nombre: 'Moscovio', simbolo: 'Mc'}, {nombre: 'Livermorio', simbolo: 'Lv'}, {nombre: 'Tenesino', simbolo: 'Ts'}, {nombre: 'Oganesón', simbolo: 'Og'} ];
+    
+    function getRandomInt(max) {
+        return Math.floor(Math.random() * max); 
+    }
+
+    document.getElementById('SimbolosC').addEventListener('click', function() {
+      document.querySelector('.menu').style.display = 'none';
+      document.querySelector('.Simbolos').style.display = 'block';
+      randomNumber = getRandomInt(elementos.length);
+      document.getElementById('PreguntaS').innerText = "Que es: " + elementos[randomNumber].simbolo;
+    });
+    document.getElementById('NombresC').addEventListener('click', function() {
+      document.querySelector('.menu').style.display = 'none';
+      document.querySelector('.Nombres').style.display = 'block';
+      randomNumber = getRandomInt(elementos.length);
+      document.getElementById('PreguntaN').innerText = "Que es: " + elementos[randomNumber].nombre;
+    });
+
+    var randomNumber = 0;
+
+    document.getElementById("inputS").addEventListener("keyup", function(event) {
+        if (event.keyCode === 13) { 
+            event.preventDefault();
+            SimbolosF();
+        }
+    });
+
+    document.getElementById("InputN").addEventListener("keyup", function(event) {
+        if (event.keyCode === 13) { 
+            event.preventDefault();
+            NombresF();
+        }
+    });
+
+    function SimbolosF() {
+        var inputS = document.getElementById("inputS").value;
+        if (inputS === elementos[randomNumber].nombre) {
+            document.getElementById("ResultadoS").innerText = "Correcto";
+        } else {    
+            document.getElementById("ResultadoS").innerText = "Incorrecto";
+        }
+        document.getElementById("TuRespuestaS").innerText = "Tu respuesta: " + inputS;
+        document.getElementById("RespuestaS").innerText = "Respuesta: " + elementos[randomNumber].nombre;
+
+        randomNumber = getRandomInt(elementos.length);
+        document.getElementById('PreguntaS').innerText = "Que es: " + elementos[randomNumber].simbolo;
+    }
+
+    function NombresF() {
+        var inputN = document.getElementById("InputN").value;
+        if (inputN === elementos[randomNumber].simbolo) {
+            document.getElementById("ResultadoN").innerText = "Correcto";
+        } else {    
+            document.getElementById("ResultadoN").innerText = "Incorrecto";
+        }
+        document.getElementById("TuRespuestaN").innerText = "Tu respuesta: " + inputN;
+        document.getElementById("RespuestaN").innerText = "Respuesta: " + elementos[randomNumber].simbolo;
+
+        randomNumber = getRandomInt(elementos.length);
+        document.getElementById('PreguntaN').innerText = "Que es: " + elementos[randomNumber].nombre;
+    }
+</script>
+
+</body>
+</html>
